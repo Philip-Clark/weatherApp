@@ -10,8 +10,9 @@ const templateNode = createElement(
 `
 );
 
-const UnitButton = (onClick) => {
+const UnitButton = () => {
   const content = templateNode.cloneNode(true);
+  content.innerText = Weather.getWeather().units == 'imperial' ? 'use metric' : 'use imperial';
 
   content.addEventListener('click', async () => {
     content.innerText = Weather.toggleUnit() == 'imperial' ? 'use metric' : 'use imperial';

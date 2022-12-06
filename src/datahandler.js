@@ -6,8 +6,12 @@ const API = (() => {
 })();
 
 export const Weather = (() => {
-  let weatherInfo = tempWeather;
-  let weatherUnit = 'imperial';
+  let weatherInfo =
+    localStorage.getItem('weather') == null
+      ? tempWeather
+      : JSON.parse(localStorage.getItem('weather'));
+
+  let weatherUnit = weatherInfo.units == undefined ? 'imperial' : weatherInfo.units;
 
   const toggleUnit = () => {
     weatherUnit = weatherUnit == 'imperial' ? 'metric' : 'imperial';
@@ -26,6 +30,7 @@ export const Weather = (() => {
     const response = await fetch(url);
     weatherInfo = await response.json();
     weatherInfo['units'] = weatherUnit;
+    localStorage.setItem('weather', JSON.stringify(weatherInfo));
   };
 
   const getWeather = () => {
@@ -70,13 +75,17 @@ export const Weather = (() => {
 })();
 
 export const Location = (() => {
-  let location = {
+  const TmpLocation = {
     country: 'US',
     lat: 33.4425458,
     lon: -94.1305777,
     name: 'Nash',
     state: 'Texas',
   };
+  let location =
+    localStorage.getItem('location') == null
+      ? TmpLocation
+      : JSON.parse(localStorage.getItem('location'));
 
   const suggestLocation = async (cityName) => {
     let url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${5}&appid=${
@@ -92,6 +101,7 @@ export const Location = (() => {
   };
   const setLocation = (newLocation) => {
     location = newLocation;
+    localStorage.setItem('location', JSON.stringify(location));
   };
 
   return { suggestLocation, getLocation, setLocation };

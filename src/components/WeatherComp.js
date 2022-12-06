@@ -37,6 +37,7 @@ const WeatherComp = () => {
   content.appendChild(DetailsGrid());
 
   updateIcon();
+  Weather.updateWeather();
 
   return content;
 };

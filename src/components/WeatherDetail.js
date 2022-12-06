@@ -13,9 +13,10 @@ const templateNode = createElement(
 `
 );
 
-export function updateDetail(title, data) {
+export function updateDetail(title, value, unit) {
   let detail = document.getElementById(title);
-  detail.querySelector('.value').textContent = data;
+  detail.querySelector('.value').textContent = value;
+  detail.querySelector('.unit').textContent = unit;
 }
 
 const WeatherDetail = (label, value, unit) => {
