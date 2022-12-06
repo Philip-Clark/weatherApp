@@ -15,7 +15,7 @@ export const Weather = (() => {
   };
 
   const getIcon = async () => {
-    let imgUrl = `http://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}@4x.png`;
+    let imgUrl = `https://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}@4x.png`;
     const response = await fetch(imgUrl);
     return await response.url;
   };
@@ -79,7 +79,7 @@ export const Location = (() => {
   };
 
   const suggestLocation = async (cityName) => {
-    let url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${5}&appid=${
+    let url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${5}&appid=${
       API.key
     }`;
     const response = await fetch(url);

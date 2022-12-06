@@ -24,7 +24,6 @@ const LocationComp = () => {
   content.querySelector('#main').textContent = location.name;
   content.querySelector('#secondary').textContent = `${location.state}, ${location.country}`;
 
-  content.addEventListener('click', clickHamburgerMenu);
   return content;
 };
 
