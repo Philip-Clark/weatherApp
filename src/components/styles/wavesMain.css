@@ -1,0 +1,34 @@
+/* #decorativeWaves {
+  height: 100%;
+  top: 0;
+} */
+.waves {
+  position: absolute;
+  transform: translateY(calc(-90% + 5vh));
+  top: 0;
+  width: 100vw;
+}
+
+#wavesDesktop,
+#wavesDesktopBottom {
+  visibility: hidden;
+}
+
+@media (min-width: 600px) {
+  #wavesDesktop,
+  #wavesDesktopBottom {
+    visibility: visible;
+  }
+  #wavesDesktopBottom {
+    position: absolute;
+    bottom: 0;
+    top: unset;
+  }
+  .waves {
+    transform: translateY(0%);
+  }
+  #wavesMobile {
+    visibility: hidden;
+    display: none;
+  }
+}
